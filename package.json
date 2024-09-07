@@ -4,7 +4,7 @@
   "description": "A podcast listening app.",
   "main": "server.js",
   "scripts": {
-    "run": "node server.js"
+    "start": "node server.js"
   },
   "author": "Patrick Skinner",
   "license": "ISC",
