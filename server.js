@@ -1,11 +1,22 @@
 require('dotenv').config();
 const express = require('express');
+const { Pool } = require('pg');
 const { buildSchema } = require('graphql');
 const { createHandler } = require('graphql-http/lib/use/express');
 const axios = require('axios');
 
 const PODCHASER_API_KEY = process.env.PODCHASER_API_KEY;
 const PODCHASER_API_URL = process.env.PODCHASER_API_URL;
+
+const dbConfig = {
+	user: process.env.PGUSER,
+	host: process.env.PGHOST,
+	database: process.env.PGDATABASE,
+	password: process.env.PGPASSWORD,
+	port: process.env.PGPORT
+};
+
+const pool = new Pool(dbConfig);
 
 // Define your GraphQL schema with more complex queries for sorting, pagination, etc.
 const schema = buildSchema(`
@@ -58,6 +69,14 @@ const root = {
 };
 
 const app = express();
+
+app.get('/', (req, res) => {
+	res.send(`
+		<h1>Shmoovcast/h1>
+		<h2>This is a podcast app that uses GraphQL as a query language to interact with the PodchaserAPI</h2>
+		<p>Go to <a href="/graphiql">/graphiql</a> to interact with the API</p>
+		`);
+});
 
 app.get('/graphiql', (req, res) => {
 	res.send(`

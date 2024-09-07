@@ -14,6 +14,7 @@
     "express": "^4.19.2",
     "graphiql": "^3.7.1",
     "graphql": "^16.9.0",
-    "graphql-http": "^1.22.1"
+    "graphql-http": "^1.22.1",
+    "pg": "^8.12.0"
   }
 }
