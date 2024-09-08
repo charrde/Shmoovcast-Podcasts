@@ -72,9 +72,17 @@ const app = express();
 
 app.get('/', (req, res) => {
 	res.send(`
-		<h1>Shmoovcast/h1>
-		<h2>This is a podcast app that uses GraphQL as a query language to interact with the PodchaserAPI</h2>
-		<p>Go to <a href="/graphiql">/graphiql</a> to interact with the API</p>
+		<!DOCTYPE html>
+		<html>
+			<body>
+				<header>
+					<h1>Shmoovcast</h1>
+				</header>
+				<main>
+					<h2>This is a podcast app that uses GraphQL as a query language to interact with the PodchaserAPI</h2>
+					<p>Go to <a href="/graphiql">/graphiql</a> to interact with the API</p>
+				</main>
+		</html>
 		`);
 });
 
